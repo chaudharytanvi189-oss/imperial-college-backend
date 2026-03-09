@@ -1,3 +1,15 @@
+const fs = require('fs');
+console.log('📂 Current Directory:', __dirname);
+console.log('📄 Files in root:', fs.readdirSync(__dirname));
+if (fs.existsSync('./models')) {
+    console.log('📁 models folder found! Files:', fs.readdirSync('./models'));
+} else {
+    console.log('❌ models folder NOT found!');
+    console.log('🔍 Searching for any folder named "models"...');
+    const allItems = fs.readdirSync(__dirname, { withFileTypes: true });
+    const folders = allItems.filter(item => item.isDirectory()).map(item => item.name);
+    console.log('📁 All folders:', folders);
+}
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
