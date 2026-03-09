@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MongoDB Atlas Connection
-mongoose.connect('mongodb://chaudharytanvi189_db_user:2lzuCAHDYQpH1Mb8@ac-xlxgs9w-shard-00-00.hjrmufr.mongodb.net:27017,ac-xlxgs9w-shard-00-01.hjrmufr.mongodb.net:27017,ac-xlxgs9w-shard-00-02.hjrmufr.mongodb.net:27017/imperial-college?ssl=true&replicaSet=atlas-awek4w-shard-0&authSource=admin&appName=Imperial-Cluster')
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log('✅ MongoDB Atlas Connected'))
 .catch(err => console.log('❌ MongoDB Error:', err));
 
